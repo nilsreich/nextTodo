@@ -22,7 +22,9 @@ type TodoList = {
 const data = window.localStorage.getItem("todos");
 
 export default function Home() {
-  const [todos, setTodos] = useState<TodoProps[] | null>(JSON.parse(data));
+  const [todos, setTodos] = useState<TodoProps[] | null>(
+    data && JSON.parse(data),
+  );
 
   const toggleTodo = (id: string) => {
     const newTodos = todos!.flatMap((todo) =>
